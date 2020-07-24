@@ -1,0 +1,108 @@
+.container {
+  background-color: #D0D0D0;
+ 
+  .section-1 {
+    padding: 29px;
+    font-size: 14px;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    background: #FFFFFF;
+    border-bottom: 1px solid rgba(229, 229, 229, 0.6);
+
+    p {
+      color: #696969;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    .bar-options {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .top-bar-options {
+      display: flex;
+      div {
+        margin-right: 22px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .section-2 {
+    display: flex;
+    justify-content: space-between;
+    .status-bar {
+      width: 300px;
+      height: calc(100vh - 180px);
+      padding: 22px;
+      background: #FFFFFF;
+      .title {
+        font-weight: bold;
+        font-size: 16px;
+        color: #010B13;
+      }
+    }  
+    .card-container {
+      width: calc(100% - 352px);
+      padding: 24px;
+      .row1 {
+        display: flex;
+        .card {
+          width: 48%;
+        }
+      }
+    }
+    .right-navbar {
+      display: flex;
+      flex-direction: column;
+      width: 60px;
+      height: calc(100vh - 180px);
+      background: #FFFFFF;
+
+      button {
+        background-color: Transparent;
+        border: none;
+        cursor: pointer;
+        padding: 12px 12px 12px 18px;
+        &:hover {
+          background: #E5E5E5;
+          padding: 12px;
+          width: 48px;
+          display: flex;
+          align-self: center;
+        }
+        &.active {
+          background: #E5E5E5;
+          padding: 12px;
+          width: 54px;
+          // display: flex;
+          // align-self: center;
+        }
+      }
+    }
+  }
+}
+
+.customer {
+  background-color: #ffffff;
+  height: 300px;
+  width: 300px;
+  margin-top: 12px;
+}
+
+.retailer {
+  background-color: #ffffff;
+  height: 300px;
+  width: 300px;
+  margin-top: 12px;
+}
+
+.delivery-agent {
+  background-color: #ffffff;
+  height: 300px;
+  width: 300px;
+  margin-top: 12px;
+}

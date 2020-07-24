@@ -1,0 +1,89 @@
+#cartDetails {
+  &.content {
+    .flex-cart-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      color:#606060;
+
+      a {
+        cursor: default;
+        color: #0086AD;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 22px;      
+      }
+
+      $control-width: 60px;
+      $control-height: 30px;
+
+      .control {
+        display: flex;
+        width: $control-width;
+        height: $control-height;
+
+        .bttn-left {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+
+        .input {
+          width: calc(#{$control-width} * 0.5);
+          padding:0;
+          margin:0;
+          text-align: center;
+          margin-top: 5px;
+          border-left: none;
+          border-right: none;  
+        }    
+
+        a.bttn {
+          color: black;
+          text-decoration: none;
+        }
+
+        a.bttn, .bttn {
+          width: calc(#{$control-width} * 0.5);
+          padding:0;
+          text-align: center;
+          border: 1px solid black;
+          box-shadow: none;
+          background-color: white;
+          font-size: 24px;
+          
+          span {
+            margin: auto !important;
+          }
+        }
+
+        .bttn-right {
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+        }
+      }
+
+      .volume-price {
+        font-size: 14px;
+        line-height: 22px;
+        color: #606060;
+      }
+
+      .p {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 22px;
+      }
+
+      .value {
+        color:#010B13 !important ;
+      }
+
+      .sub-header {
+        color: #010B13;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 22px;
+      }
+    }
+  }
+}
