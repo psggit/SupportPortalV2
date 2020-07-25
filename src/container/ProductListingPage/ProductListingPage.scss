@@ -2,6 +2,8 @@
   background-color: #D0D0D0;
  
   .section-1 {
+    display: flex;
+    justify-content: space-between;
     padding: 29px;
     font-size: 14px;
     font-weight: bold;
@@ -9,6 +11,15 @@
     line-height: 22px;
     background: #FFFFFF;
     border-bottom: 1px solid rgba(229, 229, 229, 0.6);
+
+    .left-flex-item {
+      display: flex ;
+      width: 50%;
+    }
+
+    .right-flext-item {
+      width: 50%;
+    }
 
     p {
       color: #696969;
@@ -46,11 +57,10 @@
       }
     }  
     .card-container {
-      width: calc(100% - 352px);
+      width: 100%;
       padding: 24px;
-      
-      .section {
-        display:flex;
+      .row1 {
+        display: flex;
         justify-content: space-between;
       }
     }
@@ -83,4 +93,25 @@
       }
     }
   }
+}
+
+.customer {
+  background-color: #ffffff;
+  height: 300px;
+  width: 300px;
+  margin-top: 12px;
+}
+
+.retailer {
+  background-color: #ffffff;
+  height: 300px;
+  width: 300px;
+  margin-top: 12px;
+}
+
+.delivery-agent {
+  background-color: #ffffff;
+  height: 300px;
+  width: 300px;
+  margin-top: 12px;
 }

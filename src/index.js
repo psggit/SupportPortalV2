@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Home from './home';
 import Header from './components/header';
 import OrderDetailPage from './container/OrderDetailPage';
+import ProductListingPage from "./container/ProductListingPage/index"
 
 const history = createHistory()
 const theme = createMuiTheme({
@@ -60,6 +61,11 @@ function App() {
             exact
             path="/home/order-details/:orderId"
             component={OrderDetailPage}
+          />
+          <Route
+            exact
+            path="/home/products"
+            component={ProductListingPage}
           />
         </div>
 

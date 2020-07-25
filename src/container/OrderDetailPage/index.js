@@ -10,7 +10,7 @@ function orderDetailPage() {
   const handleScroll = (id) => {
     setActiveSection(id);
     const element = document.getElementById(id);
-    element.scrollIntoView();
+    element.scrollIntoView({ block: 'start', behavior: 'smooth' });
   }
 
   return (
@@ -38,29 +38,13 @@ function orderDetailPage() {
           <div className="title">ORDER STATUS</div>
         </div>
         <div className="card-container">
-          <div className="row1">
-            <div className="card">
-              <OrderDetails/>
-            </div>
-            <div className="card">
-
-            </div>
-          </div>
+          <OrderDetails />         
         </div>
         <div className="right-navbar">
           <button className={activeSection === "section1" ? "active": null} onClick={() => handleScroll("section1")}><Icon name="CLogo" /></button>
           <button className={activeSection === "section2" ? "active" : null} onClick={() => handleScroll("section2")}><Icon name="RLogo" /></button>
           <button className={activeSection === "section3" ? "active" : null} onClick={() => handleScroll("section3")}><Icon name="DLogo" /></button>
         </div>
-      </div>
-      <div id="section1" className="customer">
-        customer
-      </div>
-      <div id="section2" className="retailer">
-        retailer
-      </div>
-      <div id="section3" className="delivery-agent">
-        delivery agent
       </div>
     </div>
   )

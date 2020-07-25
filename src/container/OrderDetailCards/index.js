@@ -1,10 +1,12 @@
 import React, {useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import DetailsCard from './components/DetailsCard';
+import Card from './components/Card';
 import Button from '@material-ui/core/Button';
 import { fetchCompleteOrderDetails } from '../api';
 import './CartDetails.scss';
 import './DetailsCardContent.scss';
+import './NotesCardContent.scss'
+import Icon from 'Components/icon';
 
 const OrderDetail = (props) => {
 
@@ -13,6 +15,7 @@ const OrderDetail = (props) => {
   const [loadingOrderDetails, setLoadingOrderDetails] = useState(false);
   const [modifyCart,setModifyCart] = useState(false);
   const [cartItems,setCartItems] = useState([])
+  const [userNotes, setUserNotes] = useState([])
 
   useEffect(() => {
     fetchOrderDetailsData();
@@ -313,7 +316,7 @@ const orderDetailsData = {
   const deliveryAgentDetails = () => {
     return (
       <div id="cardBody" className="content">
-
+      
         <div className="flex-item">
           <div className="label">
             <p> Agent ID</p>
@@ -391,7 +394,7 @@ const orderDetailsData = {
           {
             modifyCart &&
               <div className="value">
-                <a> Add Item ></a>
+                <a> Add Item </a>
               </div>
           }
         </div>
@@ -436,22 +439,28 @@ const orderDetailsData = {
                       <p> {`${item.volume} ml | ₹${item.total_price}`}</p>
                     </div>
                   </div>
-
-                  <div className="control">
-                    {
-                      modifyCart &&
-                      <button className="bttn bttn-left" id="minus">
-                        <span>-</span>
-                      </button>
-                    }
-                    <p className="input"> {cartItems[index].deliverable_count}</p>
-                    {
-                      modifyCart &&
-                      <button className="bttn bttn-right" id="plus">
-                        <span>+</span>
-                      </button>
-                    }
-                  </div>
+                  {
+                    modifyCart &&
+                    <div className="counter">
+                      <div id="decrease">
+                        <Icon name="minus" />
+                      </div>
+                      <div className="number">
+                        {cartItems[index].deliverable_count}
+                      </div>
+                      <div id="increase">
+                        <Icon name="plus" />
+                      </div>
+                    </div>
+                  }
+                  {
+                    !modifyCart &&
+                    <div className="counter">
+                      <div className="number">
+                        {cartItems[index].deliverable_count}
+                      </div>
+                    </div>
+                  }
                 </div>
               )
             }) : ""
@@ -551,11 +560,113 @@ const orderDetailsData = {
     )
   }
 
+  const customerNotes = () => {
+    return (
+      <div id="cardBody" className="content">
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p> Customer is a pain, call support often, check logs.</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p> Customer updated KYC Details.</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p> Customer updated KYC Details.</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+
+  const retailerNotes = () => {
+    return (
+      <div id="cardBody" className="content">
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p>Does not check phone or update inventory often</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p> Retailer Updated store Details.</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p> Retailer Updated store Details.</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  const deliveryAgentNotes = () => {
+    return (
+      <div id="cardBody" className="content">
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p>Not online from 3 days. contact operation</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p> Delivery Agent updated phone no.</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+
+        <div className="flex-item-message">
+          <div className="notes-label">
+            <p> Delivery Agent Updated Phone no.</p>
+          </div>
+          <div className="notes-value">
+            <p>{"15 jun 12:12 PM"}</p>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div id="order-detail">
-
-      <div>
-        <DetailsCard
+      <div id='cart-item-card' className="section">
+        <Card
           title={"CART DETAILS"}
           actions={[
             <Button
@@ -568,11 +679,11 @@ const orderDetailsData = {
           ]}
         >
           {cartDetails()}
-        </DetailsCard>
+        </Card>
       </div>
 
       <div>
-        <DetailsCard
+        <Card
           title={"CUSTOMER DETAILS"}
           subtitle={"More >"}
           actions={[
@@ -591,11 +702,26 @@ const orderDetailsData = {
           ]}
         >
           {customerDetails()}
-        </DetailsCard>
+        </Card>
+
+        <Card
+          title={"CUSTOMER NOTES"}
+          subtitle={"More >"}
+          actions={[
+            <Button
+              className={classes.button}
+              variant="contained"
+            >
+              ADD
+            </Button>
+          ]}
+        >
+          {customerNotes()}
+        </Card>
       </div>
 
-      <div>
-        <DetailsCard
+      <div id="section2" className="section">
+        <Card
           title={"RETAILER DETAILS"}
           actions={[
             <Button
@@ -613,11 +739,26 @@ const orderDetailsData = {
           ]}
         >
           {retailerDetails()}
-        </DetailsCard>
+        </Card>
+        <Card
+          title={"RETAILER NOTES"}
+          subtitle={"More >"}
+          actions={[
+            <Button
+              className={classes.button}
+              variant="contained"
+            >
+              ADD
+            </Button>
+          ]}
+        >
+          {retailerNotes()}
+        </Card>
+
       </div>
 
-      <div>
-        <DetailsCard
+      <div id="section3" className="section">
+        <Card
           title={"DELIVERY AGENT DETAILS"}
           subtitle={"Reserve"}
           actions={[
@@ -636,7 +777,21 @@ const orderDetailsData = {
           ]}
         >
           {deliveryAgentDetails()}
-        </DetailsCard>
+        </Card>
+        <Card
+          title={"DELIVERY AGENT NOTES"}
+          subtitle={"More >"}
+          actions={[
+            <Button
+              className={classes.button}
+              variant="contained"
+            >
+              ADD
+            </Button>
+          ]}
+        >
+          {deliveryAgentNotes()}
+        </Card>
       </div>
     </div>
   );

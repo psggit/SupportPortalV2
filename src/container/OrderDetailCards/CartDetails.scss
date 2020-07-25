@@ -13,55 +13,91 @@
         font-weight: bold;
         line-height: 22px;      
       }
+      
+      .counter {
+        position: relative;
+        //font-size:2em;
+        color:black;
+        text-align:center;
+        background:white;
+        width:80px;
+        height:27px;
+        border-radius:14px;
+        border: 1.6px solid #0086AD;
 
-      $control-width: 60px;
-      $control-height: 30px;
-
-      .control {
-        display: flex;
-        width: $control-width;
-        height: $control-height;
-
-        .bttn-left {
-          border-top-left-radius: 5px;
-          border-bottom-left-radius: 5px;
+        .number{
+          position:absolute;
+          top: 2px;
+          left: 35px;
+          font-size: 16px;
+          line-height: 22px;
+          transition:color .2s ease-in-out;
         }
 
-        .input {
-          width: calc(#{$control-width} * 0.5);
-          padding:0;
-          margin:0;
-          text-align: center;
-          margin-top: 5px;
-          border-left: none;
-          border-right: none;  
-        }    
-
-        a.bttn {
-          color: black;
-          text-decoration: none;
+        #increase {
+          position: absolute;
+          cursor: pointer;
+          left: 57px;
+          top: 6px;
         }
 
-        a.bttn, .bttn {
-          width: calc(#{$control-width} * 0.5);
-          padding:0;
-          text-align: center;
-          border: 1px solid black;
-          box-shadow: none;
-          background-color: white;
-          font-size: 24px;
-          
-          span {
-            margin: auto !important;
-          }
-        }
-
-        .bttn-right {
-          border-top-right-radius: 5px;
-          border-bottom-right-radius: 5px;
+        #decrease {
+          position: absolute;
+          cursor: pointer;
+          top: 11px;
+          left:9px;
+          //z-index:10;
         }
       }
 
+      // $control-width: 60px;
+      // $control-height: 30px;
+
+      // .control {
+      //   display: flex;
+      //   width: $control-width;
+      //   height: $control-height;
+
+      //   .bttn-left {
+      //     border-top-left-radius: 5px;
+      //     border-bottom-left-radius: 5px;
+      //   }
+
+      //   .input {
+      //     width: calc(#{$control-width} * 0.5);
+      //     padding:0;
+      //     margin:0;
+      //     text-align: center;
+      //     margin-top: 5px;
+      //     border-left: none;
+      //     border-right: none;  
+      //   }    
+
+      //   a.bttn {
+      //     color: black;
+      //     text-decoration: none;
+      //   }
+
+      //   a.bttn, .bttn {
+      //     width: calc(#{$control-width} * 0.5);
+      //     padding:0;
+      //     text-align: center;
+      //     border: 1px solid black;
+      //     box-shadow: none;
+      //     background-color: white;
+      //     font-size: 24px;
+          
+      //     span {
+      //       margin: auto !important;
+      //     }
+      //   }
+
+      //   .bttn-right {
+      //     border-top-right-radius: 5px;
+      //     border-bottom-right-radius: 5px;
+      //   }
+      // }
+      
       .volume-price {
         font-size: 14px;
         line-height: 22px;

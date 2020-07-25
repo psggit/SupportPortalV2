@@ -7,3 +7,12 @@ export function fetchCompleteOrderDetails(payload) {
     handleError: true
   })
 }
+
+export function fetchGenreList(payload) {
+  return POST({
+    api: `/Api/stockandprice/listing/genres`,
+    apiBase: "retailer",
+    handleError: true,
+    data: payload
+  })
+}
