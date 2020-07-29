@@ -41,11 +41,12 @@
     "webpack-merge": "^4.1.4"
   },
   "dependencies": {
+    "clsx": "^1.1.1",
     "compression-webpack-plugin": "^1.1.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-js-pagination": "^3.0.2",
-    "react-slick": "^0.27.0",
+    "react-slick": "^0.27.1",
     "slick-carousel": "^1.8.1",
     "webpack": "^4.6.0"
   }

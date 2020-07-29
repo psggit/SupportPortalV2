@@ -153,8 +153,6 @@ const orderDetailsData = {
    }
 }
 
-
-
   const customerDetails = () => {
     return (
       <div id="cardBody" className="content">
@@ -682,7 +680,7 @@ const orderDetailsData = {
         </Card>
       </div>
 
-      <div>
+      <div id="section1" className="section">
         <Card
           title={"CUSTOMER DETAILS"}
           subtitle={"More >"}

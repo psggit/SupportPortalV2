@@ -1,4 +1,4 @@
-.container {
+#orderDetailPage {
   background-color: #D0D0D0;
  
   .section-1 {
@@ -28,6 +28,18 @@
         margin-right: 22px;
         cursor: pointer;
       }
+      // input.partitioned {
+      //   padding-left: 15px;
+      //   letter-spacing: 42px;
+      //   border: 0;
+      //   background-image: linear-gradient(to left, #606060 70%, rgba(229, 229, 229, 0.6) 0%);
+      //   background-position: bottom;
+      //   background-size: 50px 1px;
+      //   background-repeat: repeat-x;
+      //   background-position-x: 35px;
+      //   width: 180px;
+      //   min-width: 180px;
+      // }
     }
   }
 
@@ -83,4 +95,17 @@
       }
     }
   }
+}
+
+input.partitioned {
+  padding-left: 15px;
+  letter-spacing: 42px;
+  border: 0;
+  background-image: linear-gradient(to left, #606060 70%, rgba(229, 229, 229, 0.6) 0%);
+  background-position: bottom;
+  background-size: 50px 1px;
+  background-repeat: repeat-x;
+  background-position-x: 35px;
+  width: 180px;
+  min-width: 180px;
 }

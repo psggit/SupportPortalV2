@@ -16,3 +16,29 @@ export function fetchGenreList(payload) {
     data: payload
   })
 }
+
+export function fetchOrderDetails(payload) {
+  return POST({
+    api: `/deliveryman/api/1/fetch-order-details`,
+    apiBase: "api",
+    handleError: true,
+    data: payload
+  })
+}
+
+export function fetchKycDocumentList(payload) {
+  return GET({
+    api: `/deliveryman/api/1/agent/kyc-list`,
+    apiBase: "api",
+    handleError: true
+  })
+}
+
+export function fetchCancellationReasons(payload) {
+  return POST({
+    api: `/deliveryman/api/1/support/cancel-reason`,
+    apiBase: "api",
+    handleError: true,
+    data: payload
+  })
+}

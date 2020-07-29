@@ -1,0 +1,30 @@
+#notes-list {
+  .row1 {
+    display:flex;
+    padding: 17px;
+    background-color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #E5E5E5;
+    .notes {
+      margin-left: 22px;
+      margin-top: 8px;
+    }
+  }
+  .row2 {
+    .notesBar {
+      display: flex;
+      justify-content: space-between;
+      // padding: 29px;
+      padding: 29px 29px 0px 29px;
+      .customerID{
+        font-weight: bold;
+        color: #696969;
+      }
+    }
+    .notesList{
+      width: 1120px;
+      padding: 24px;
+    }
+  }
+}
