@@ -70,7 +70,7 @@ function App() {
           />
           <Route
             exact
-            path="/home/list-notes"
+            path="/home/list-notes/:customerId"
             component={ListNotes}
           />
         </div>

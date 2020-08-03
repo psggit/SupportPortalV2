@@ -1,34 +1,36 @@
-import React from "react"
+import React from 'react';
 
-const NotesList = [
-  {
-   note_no: '123',
-   note_type: 'KYC',
-   desc: 'Consumer KYC detail upload.',
-   created_by: 'Naveen',
-   created_at: '15 jun 2020'
+export const NotesList = {
+  data: [{
+    note_no: '123',
+    note_type: 'KYC',
+    desc: 'Consumer KYC detail upload.',
+    created_by: 'Naveen',
+    created_at: '2018-01-10T15:01:13.652261+05:30'
   },
   {
     note_no: '123',
     note_type: 'KYC',
     desc: 'Consumer KYC detail upload.',
     created_by: 'Naveen',
-    created_at: '15 jun 2020'
+    created_at: '2018-01-10T15:01:13.652261+05:30'
   },
   {
     note_no: '123',
     note_type: 'KYC',
     desc: 'Consumer KYC detail upload.',
     created_by: 'Naveen',
-    created_at: '15 jun 2020'
+    created_at: '2018-01-10T15:01:13.652261+05:30'
   },
   {
     note_no: '123',
     note_type: 'KYC',
     desc: 'Consumer KYC detail upload.',
     created_by: 'Naveen',
-    created_at: '15 jun 2020'
-  },
-]
+    created_at: '2018-01-10T15:01:13.652261+05:30'
+  }],
+  count: 100
+};
+
 
 export default NotesList

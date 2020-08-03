@@ -1,19 +1,19 @@
 //import React from "react"
 import { makeStyles } from '@material-ui/core/styles';
-import React, { useState, useEffect } from "react"
-import './ListNotesContent.scss'
+import React, { useState, useEffect } from 'react';
+import './ListNotesContent.scss';
 import Button from '@material-ui/core/Button';
-import Icon from '../../components/icon'
-import Table from "Components/table"
-import TableRow from "@material-ui/core/TableRow"
-import TableCell from "@material-ui/core/TableCell"
-import TableLoadingShell from "Components/tableLoadingShell"
-import Pagination from "Components/pagination"
-import { getOffsetUsingPageNo, getQueryParamByName, getQueryUri } from "Utils/helpers"
-import { fetchOrderDetails } from "../api"
-import NotesList from './NotesMockData';
-import Dialog from "../../components/dialog"
-import TextareaAutosize from '@material-ui/core/TextareaAutosize'
+import Icon from 'Components/icon';
+import Table from 'Components/table';
+import TableRow from '@material-ui/core/TableRow';
+import TableCell from '@material-ui/core/TableCell';
+import TableLoadingShell from 'Components/tableLoadingShell';
+import Pagination from 'Components/pagination';
+import { getOffsetUsingPageNo, getQueryParamByName, getQueryUri } from'Utils/helpers';
+import { fetchOrderDetails } from '../api';
+import {NotesList} from './NotesMockData';
+import Dialog from 'Components/dialog';
+import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
@@ -23,7 +23,7 @@ const tableHeaders = [
   { label: "NOTE TYPE", value: "date_and_time" },
   { label: "DESCROPTION", value: "order_status" },
   { label: "CREATED BY", value: "consumer_id" },
-  { label: "CREATED AT", value: "consumer_name" },
+  { label: "CREATED AT", value: "consumer_name" }
 ]
 
 function ListNotes(props) {
@@ -31,7 +31,7 @@ function ListNotes(props) {
   const classes = useStyles();
   const pageLimit = 25
   const activePage = getQueryParamByName("activePage") || 1
-  const [orderDetailsList, setOrderDetailsList] = useState([])
+  const [notesList, setNotesList] = useState([])
   const [isLoading, setLoading] = useState(false)
   const [pageNo, setPageNo] = useState(activePage)
   const [count, setCount] = useState(0)
@@ -39,11 +39,8 @@ function ListNotes(props) {
   const [showAddNoteDilog, setShowAddNoteDialog] = useState(false)
   const [age, setAge] = useState('');
 
-
-
   useEffect(() => {
-    console.log("check-data", NotesList)
-    fetchOrderDetailsList()
+    fetchNotesList();
   }, [pageNo])
 
   const handleChange = (event) => {
@@ -58,34 +55,29 @@ function ListNotes(props) {
     setShowAddNoteDialog(false)
   }
 
-
   const handleBack = () =>{
     props.history.push(`/home/order-details/1222`)
   }
 
-  const fetchOrderDetailsList = () => {
+  const fetchNotesList = () => {
     const payload = {
-      pagination: {
-        limit: pageLimit,
-        offset: ((pageNo - 1) * parseInt(pageLimit)),
-      },
-      filter: 
-        {consumer_contact_number: "9445175856"}
+      customer_id: "123"
     }
 
     setLoading(true)
-    fetchOrderDetails(payload)
-      .then((response) => {
-        console.log("response from then", response.message)
-        setLoading(false)
-        setOrderDetailsList(response.order_details)
-        setCount(response.count)
-      })
-      .catch((error) => {
-        error.json().then((json) => {
-          setLoading(false)
-        })
-      })
+    setNotesList(NotesList.data)
+    setLoading(false)
+    // fetchOrderDetails(payload)
+    //   .then((response) => {
+    //     setLoading(false)
+    //     setNotesList(response.notes_list)
+    //     setCount(response.count)
+    //   })
+    //   .catch((error) => {
+    //     error.json().then((json) => {
+    //       setLoading(false)
+    //     })
+    //   })
   }
 
   const handlePageChange = (pageObj) => {
@@ -100,17 +92,17 @@ function ListNotes(props) {
   return (
     <div id="notes-list">
       <div className="row1">
-        <div>
+        {/* <div>
           <Button onClick={handleBack}><Icon name="back" /></Button> 
-        </div>
+        </div> */}
         <div className="notes">
           <p>Notes</p>
         </div>
       </div>
       <div className="row2">
-        <div className="notesBar">
-          <div className="customerID">
-            <p>CUSTOMER ID: 1234</p>
+        <div className="notes-bar">
+          <div className="customer-id">
+            <p>CUSTOMER ID:{props.match.params.customerId}</p>
           </div>
           <div>
             <Button
@@ -132,15 +124,15 @@ function ListNotes(props) {
                     onClick={UnmountAddNote}
                   >
                     Cancel
-                    </Button>,
+                  </Button>,
                   <Button
                     className={classes.button}
                     variant="contained"
                     color="secondary"
                     //onClick={commentUnmountModel}
                   >
-                    save
-                    </Button>
+                    Save
+                  </Button>
                 ]}
               >
                 <form>
@@ -176,55 +168,50 @@ function ListNotes(props) {
             }
           </div>
         </div>
-        <div className="notesList">
-            <Table tableHeaders={tableHeaders}>
-              {
-                !isLoading
-                  ? (
-                    // orderDetailsList && orderDetailsList.map((data, index) => {
-                   NotesList && NotesList.map((data, index) => {
-                      return (
-                        <TableRow className={classes.tableRow} key={index} onClick={() => handleRowClick(data)}>
-                          <TableCell component="th" scope="row" align="left">
-                            {/* <u>{data.order_id}</u> */}
-                            {data.note_no}
-                          </TableCell>
-                          {/* <TableCell align="left">{Moment(data.date_and_time).format("DD/MM/YYYY h:mm A")}</TableCell>
-                          <TableCell align="left">{data.order_status}</TableCell>
-                          <TableCell align="left">{data.consumer_id}</TableCell>
-                          <TableCell align="left">{data.consumer_name}</TableCell> */}
-                          <TableCell align="left">{data.note_type}</TableCell>
-                          <TableCell align="left">{data.desc}</TableCell>
-                          <TableCell align="left">{data.created_by}</TableCell>
-                          <TableCell align="left">{data.created_at}</TableCell>
-                        </TableRow>
-                      )
-                    }))
-                  : (
-                    [1, 2, 3, 4, 5].map((item, i) => (
-                      <TableLoadingShell key={i} />
-                    ))
-                  )
-              }
-              {/* {
-                !isLoading && orderDetailsList.length === 0 &&
-                <tr>
-                  <td style={{ textAlign: "center", padding: "10px 0" }} colSpan='6'>
-                    <p style={{ fontWeight: "16px" }}>No records found</p>
-                  </td>
-                </tr>
-              } */}
-            </Table>
+        <div className="notes-list">
+          <Table tableHeaders={tableHeaders}>
+            {
+              !isLoading
+                ? (
+                  notesList && notesList.map((data, index) => {
+                    return (
+                      <TableRow key={index} className={classes.tableRow}>
+                        <TableCell component="th" align="left">
+                          {data.note_no}
+                        </TableCell>
+                        <TableCell align="left">{data.note_type}</TableCell>
+                        <TableCell align="left">{data.desc}</TableCell>
+                        <TableCell align="left">{data.created_by}</TableCell>
+                        <TableCell align="left">{data.created_at}</TableCell>
+                      </TableRow>
+                    )
+                  }))
+                : (
+                  [1, 2, 3, 4, 5, 6, 7].map((item, i) => (
+                    <TableLoadingShell key={i} />
+                  ))
+                )
+            }
             {/* {
-              orderDetailsList.length > 0 && !isLoading &&
-              <Pagination
-                activePage={parseInt(pageNo)}
-                itemsCountPerPage={parseInt(pageLimit)}
-                totalItemsCount={count}
-                pageRangeDisplayed={5}
-                setPage={handlePageChange}
-              />
+              !isLoading && orderDetailsList.length === 0 &&
+              <tr>
+                <td style={{ textAlign: "center", padding: "10px 0" }} colSpan='6'>
+                  <p style={{ fontWeight: "16px" }}>No records found</p>
+                </td>
+              </tr>
             } */}
+          </Table>
+          {/* {
+            orderDetailsList.length > 0 && !isLoading &&
+            <Pagination
+              activePage={parseInt(pageNo)}
+              itemsCountPerPage={parseInt(pageLimit)}
+              totalItemsCount={count}
+              pageRangeDisplayed={5}
+              setPage={handlePageChange}
+            />
+          } */}
+
         </div>
       </div>
     </div>
@@ -251,6 +238,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "4px",
     border: "1.6px solid #0086AD"
   },
+  tableRow: {
+    borderBottom: "2px solid #C7C7C7"
+  },
   formRoot: {
     padding: 24
   },
@@ -270,5 +260,4 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-
-export default ListNotes
+export default ListNotes;

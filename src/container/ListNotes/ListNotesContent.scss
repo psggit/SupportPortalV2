@@ -1,30 +1,32 @@
 #notes-list {
+  background-color: #D0D0D0;
   .row1 {
     display:flex;
-    padding: 17px;
+    padding: 21px;
     background-color: #ffffff;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     border-bottom: 1px solid #E5E5E5;
+    align-items: center;
     .notes {
       margin-left: 22px;
-      margin-top: 8px;
     }
   }
   .row2 {
-    .notesBar {
+    .notes-bar {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      // padding: 29px;
-      padding: 29px 29px 0px 29px;
-      .customerID{
+      padding: 22px 24px 22px 24px;
+      .customer-id {
         font-weight: bold;
+        font-size: 16px;
         color: #696969;
       }
     }
-    .notesList{
-      width: 1120px;
-      padding: 24px;
+    .notes-list {
+      // width: 1120px;
+      padding: 0 24px 24px 24px;
     }
   }
 }
